@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cricket.css">
+</head>
+<body>
+<h1>BAT BALL AND STUMP GAME</h1>
+ <br>
+<!--CODE FOR BUTTON 1-->
+<button class="button" onclick=" 
+let computerChoice=generateComputerChoice();
+let resultMessage=giveFinalDecision('BAT',computerChoice);
+showResult('BAT',computerChoice,resultMessage);
+"><img src="photos/bat.png" alt="Bat image" class="choice-image">
+</button>
+<!--CODE FOR BUTTON 2-->
+<button class="button" onclick=" 
+computerChoice=generateComputerChoice();
+resultMessage=giveFinalDecision('BALL',computerChoice);
+showResult('BALL',computerChoice,resultMessage);
+"><img src="photos/ball.png" alt="ball-image" class="choice-image"></button>
+<!--CODE FOR BUTTON 3-->
+<button class="button" onclick="   
+computerChoice=generateComputerChoice();
+resultMessage=giveFinalDecision('STUMP',computerChoice);
+showResult('STUMP',computerChoice,resultMessage);
+"><img src="photos/stump.png" alt="stump-image" class="choice-image"></button>
+
+<h3 id="user-move"></h3>
+<h3 id="computer-move"></h3>
+<h3 id="result"></h3>
+<h3 id="score"></h3>
+<!--CODE FOR BUTTON 4-->
+<button class="reset-button"onclick="localStorage.clear();
+resetScore();
+">Reset</button>
+
+<!--THESE ARE THE FUNCTIONS USED IN ABOVE CODE-->
+<script>//OBJECT SCORE-->
+let scoreStr= localStorage.getItem('Score');//retrieving the score from local storage
+let score;//NOW REFRESH BUTTON WILL NOT AFFECT OUR ALERT MSG ALSO
+resetScore(scoreStr);
+//NEW FXN RESET SCORE-->
+function resetScore(scoreStr){ 
+    if(scoreStr){//means if scoreStr is defined-->not null and not undefined
+        score=JSON.parse(scoreStr);}
+else{
+score={
+    win: 0,
+    lost: 0,
+    tie: 0,};} //can also use ternary operator here -->
+// score = JSON.parse(scoreStr)|| {win:0,
+//     lost:0, tie:0,
+// }
+    score.displayScore = function(){//another of defining a method
+         return `WIN: ${score.win}, LOST: ${score.lost}, TIE:${score.tie}`
+localStorage.setItem('Score',JSON.stringify(score));//give back updated score to local storage
+        };
+        showResult();
+}
+//FUNCTION 1-->
+   function generateComputerChoice(){ let choice;
+   let randomNumber = Math.random()*3;//Math.random gives a no. between 0 and 1, so range of math.random * 3 will be from 0 to 3-->
+if(randomNumber>=0 && randomNumber<1){ choice ='BAT';}
+else if (randomNumber<2 && randomNumber>=1 ){ choice ='BALL';}
+else if(randomNumber>=2 && randomNumber<3){ choice ='STUMP';}
+return choice;
+    }
+//FUNCTION 2-->
+    function giveFinalDecision(userMove,computerMove){
+        let resultMessage;
+        if(userMove==='BAT'){if(computerMove=== 'BAT'){resultMessage='IT IS A TIE'; score.tie++;}
+else if(computerMove==='BALL'){resultMessage='YOU WON'; score.win++;}
+else if(computerMove==='STUMP'){resultMessage='COMPUTER WON';score.lost++;}
+return resultMessage;
+}
+        else if(userMove==='BALL'){ if(computerMove=== 'BAT'){resultMessage='COMPUTER WON';score.lost++;}
+else if(computerMove==='BALL'){resultMessage='IT IS A TIE'; score.tie++;}
+else if(computerMove==='STUMP'){resultMessage='YOU WON';score.win++;}
+return resultMessage;
+}
+else if (userMove==='STUMP'){if(computerMove=== 'BAT'){resultMessage='YOU WON';score.win++;}
+else if(computerMove==='BALL'){resultMessage='COMPUTER WON';score.lost++;}
+else if(computerMove==='STUMP'){resultMessage='IT IS A TIE'; score.tie++;}
+return resultMessage;
+}
+}//FUNCTION 3--> 
+
+function showResult(userMove,computerMove,resultMessage){ 
+    document.querySelector('#user-move').innerText = userMove  ? `YOU HAVE CHOSEN TO ${userMove}` : '';
+    document.querySelector('#computer-move').innerText = computerMove  ? `COMPUTER CHOICE IS ${computerMove}` : '';
+    document.querySelector('#result').innerText = resultMessage  ? `RESULT : ${resultMessage}` : '';
+    document.querySelector('#score').innerText = score  ? `SCORE : ${score.displayScore()}` : '';
+     localStorage.setItem('Score',JSON.stringify(score));//to store score in application , as key value pair(even when the page is refreshed)
+
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
