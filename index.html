@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cricket.css">
+</head>
+<body>
+<h1>BAT BALL AND STUMP GAME</h1>
+ <br>
+<!--CODE FOR BUTTON 1-->
+<button class="button" onclick=" 
+let computerChoice=generateComputerChoice();
+let resultMessage=giveFinalDecision('BAT',computerChoice);
+showResult('BAT',computerChoice,resultMessage);
+"><img src="photos/bat.png" alt="Bat image" class="choice-image">
+</button>
+<!--CODE FOR BUTTON 2-->
+<button class="button" onclick=" 
+computerChoice=generateComputerChoice();
+resultMessage=giveFinalDecision('BALL',computerChoice);
+showResult('BALL',computerChoice,resultMessage);
+"><img src="photos/ball.png" alt="ball-image" class="choice-image"></button>
+<!--CODE FOR BUTTON 3-->
+<button class="button" onclick="   
+computerChoice=generateComputerChoice();
+resultMessage=giveFinalDecision('STUMP',computerChoice);
+showResult('STUMP',computerChoice,resultMessage);
+"><img src="photos/stump.png" alt="stump-image" class="choice-image"></button>
+
+<h3 id="user-move"></h3>
+<h3 id="computer-move"></h3>
+<h3 id="result"></h3>
+<h3 id="score"></h3>
+<!--CODE FOR BUTTON 4-->
+<button class="reset-button"onclick="localStorage.clear();
+resetScore();//we can also use resetScore(null);
+">Reset</button>
+<!--JAVA SCRIPT-->
+<script src="cricket.js">//OBJECT SCORE-->
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

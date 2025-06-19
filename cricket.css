@@ -3,7 +3,6 @@ body {
     text-align: center;
     background: linear-gradient(to right, #dfffdc, #f2ffe6);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
     margin: 0;
     padding: 0;
 }
@@ -12,7 +11,7 @@ h1 {
     font-size: 2.5rem;
     margin-top: 30px;
     color: #2f5d34;
-    text-shadow: 1px 1px 2px #b9e0c1;
+    text-shadow: 1px 1px 2px #a8d8b5;/*1px horiz shadow, 1 px vertical and 2 px multidirectional shadow*/
 }
 
 /* BUTTON STYLING */
@@ -22,13 +21,16 @@ h1 {
     border: none;
     border-radius: 15px;
     background-color: #c6f0b8;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;/**/
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);/*constant shadow, that sustains*/
+    transition: all 0.3s ease; /* Smoothly animates hover effects */
+    /* Your other button styles... */
+
 }
 
-.button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+.button:hover {/*applied only when we hover mouse on the buttons*/
+    transform: scale(1.1);/*Makes the button grow to 1.1 timesits original size*/
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);/*8px vertical shadow, 12px-->blurness of shadow*/
 }
 
 /* IMAGE INSIDE BUTTON */
@@ -49,11 +51,12 @@ h1 {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.reset-button:hover {
-    background-color: #e85c53;
+.reset-button:hover {/*on hovering , this buttons converts to this color*/
+    background-color: #dc392e;
+    
 }
 
 /* RESULTS SECTION */
